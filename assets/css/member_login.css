@@ -1,0 +1,14 @@
+.login-links a {
+    text-decoration: none;    /* 밑줄 제거 */
+    color: #333;              /* 검정 또는 어두운 회색 */
+    cursor: pointer;          /* 마우스 올리면 포인터 */
+    padding: 0 6px;
+}
+
+.login-links span {
+    color: #ccc;              /* 구분용 | 색상 */
+}
+
+.login-links a:hover {
+    color: #007bff;           /* 살짝 파랗게 반응 */
+}
