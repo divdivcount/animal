@@ -74,8 +74,8 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'dsn'	=> '',
-	'hostname' => 'localhost',
+	// 'dsn'	=> '',
+	'hostname' => 'was-mariadb-1',
 	'username' => 'ky',
 	'password' => '1234',
 	'database' => 'phpdb',
