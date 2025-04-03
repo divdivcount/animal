@@ -9,7 +9,7 @@
       </div>
     <?php endif; ?>
 
-    <form method="POST" action="<?= site_url('auth/login') ?>">
+    <form method="POST" action="<?= site_url('login/login') ?>">
       <div class="mb-3">
         <label for="email">이메일</label>
         <input type="email" class="form-control" name="email" required>
@@ -22,11 +22,11 @@
     </form>
 
     <div class="d-flex justify-content-center mt-2 mb-3 text-center small login-links">
-      <a href="<?= site_url('auth/find_id') ?>">아이디 찾기</a>
+      <a href="<?= site_url('login/find_id') ?>">아이디 찾기</a>
       <span>|</span>
-      <a href="<?= site_url('auth/reset_password') ?>">비밀번호 재발급</a>
+      <a href="<?= site_url('login/reset_password') ?>">비밀번호 재발급</a>
       <span>|</span>
-      <a href="<?= site_url('auth/register') ?>">회원가입</a>
+      <a href="<?= site_url('register') ?>">회원가입</a>
     </div>
 
 
@@ -34,13 +34,13 @@
 
     <div class="text-center mb-2">소셜 계정으로 간편 로그인</div>
     <div class="d-flex justify-content-between mt-2 mb-3 text-center small">
-      <a href="<?= site_url('auth/kakao') ?>">
+      <a href="<?= site_url('login/kakao') ?>">
         <img src="/assets/images/kakao_logo.png" class="sns-icon">
       </a>
-      <a href="<?= site_url('auth/naver') ?>">
+      <a href="<?= site_url('login/naver') ?>">
         <img src="/assets/images/naver_logo.png" class="sns-icon">
       </a>
-      <a href="<?= site_url('auth/google') ?>">
+      <a href="<?= site_url('login/google') ?>">
         <img src="/assets/images/google_logo.png" class="sns-icon">
       </a>
     </div>
