@@ -37,16 +37,16 @@ class Register extends CI_Controller {
                 redirect('register');
             }
 
-            if ($this->User_model->get_by_nickname($nickname)) {
+            if ($this->UserModel->get_by_nickname($nickname)) {
                 $this->session->set_flashdata('error', '이미 사용 중인 닉네임입니다.');
-                redirect('auth/register');
+                redirect('register');
             }
     
             // 비밀번호 해싱
             $hashed = password_hash($password, PASSWORD_BCRYPT);
     
             $this->UserModel->create([
-                'email' => $email,
+                'email' => encrypt_string($email),
                 'nickname' => $nickname,
                 'password' => $hashed,
                 'login_type' => 'local',
