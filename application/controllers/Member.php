@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Register extends CI_Controller {
+class Member extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
@@ -10,12 +10,11 @@ class Register extends CI_Controller {
         $this->load->library('session');
     }
 
-	public function index()
-	{
+    public function join(){
         $this->load->view('/user/common/header');
 		$this->load->view('/user/auth/register');
         $this->load->view('/user/common/footer');
-	}
+    }
 
     public function registerTreatment() {
         $this->load->library('session');
@@ -29,17 +28,17 @@ class Register extends CI_Controller {
             // 기본 검증
             if ($password !== $password_confirm) {
                 $this->session->set_flashdata('error', '비밀번호가 일치하지 않습니다.');
-                redirect('register');
+                redirect('member/join');
             }
     
             if ($this->UserModel->exists_by_email($email)) {
                 $this->session->set_flashdata('error', '이미 가입된 이메일입니다.');
-                redirect('register');
+                redirect('member/join');
             }
 
             if ($this->UserModel->get_by_nickname($nickname)) {
                 $this->session->set_flashdata('error', '이미 사용 중인 닉네임입니다.');
-                redirect('register');
+                redirect('member/join');
             }
     
             // 비밀번호 해싱
@@ -55,9 +54,9 @@ class Register extends CI_Controller {
             ]);
     
             $this->session->set_flashdata('success', '회원가입이 완료되었습니다. 로그인 해주세요!');
-            redirect('login');
+            redirect('account');
         } else {
-            $this->load->view('register');
+            $this->load->view('/user/auth/register');
         }
     }
 

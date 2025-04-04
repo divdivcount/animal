@@ -5,7 +5,7 @@ nicknameInput.addEventListener('blur', function () {
 const nickname = nicknameInput.value;
 
 if (nickname.length > 0) {
-    fetch("register/check_nickname", {
+    fetch("/member/check_nickname", {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: "nickname=" + encodeURIComponent(nickname)

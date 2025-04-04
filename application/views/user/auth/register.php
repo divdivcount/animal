@@ -6,7 +6,7 @@
       <div class="alert alert-danger"><?= $this->session->flashdata('error') ?></div>
     <?php endif; ?>
 
-    <form method="POST" action="<?= site_url('register/registerTreatment') ?>">
+    <form method="POST" action="<?= site_url('/member/registerTreatment') ?>">
       <div class="mb-3">
         <label for="email">이메일</label>
         <input type="email" class="form-control" name="email" required>
@@ -33,7 +33,7 @@
     </form>
 
     <div class="text-center mt-3">
-      <a href="<?= site_url('login') ?>">이미 계정이 있으신가요?</a>
+      <a href="<?= site_url('account') ?>">이미 계정이 있으신가요?</a>
     </div>
   </div>
 </body>
