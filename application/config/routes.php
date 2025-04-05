@@ -52,3 +52,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'main';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+$route['account/logout'] = 'account/logout';
+$route['pet/register'] = 'pet/register';
+$route['pet/store'] = 'pet/store';
+$route['pet/list'] = 'pet/list';
+$route['journal/list'] = 'journal/list';
+$route['journal/write/(:num)'] = 'journal/write/$1';  // 수정 페이지
+$route['journal/save/(:num)'] = 'journal/save/$1';    // 수정 저장
+$route['journal/save'] = 'journal/save';              // 새로 작성 저장
+$route['journal/view/(:num)'] = 'journal/view/$1';  // 하루기록 상세보기

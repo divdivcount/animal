@@ -1,13 +1,16 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Member extends CI_Controller {
+require_once(APPPATH . 'core/Secure_Controller.php');
+
+class Member extends Secure_Controller {
+
+    protected $block_if_logged_in = true;
 
     public function __construct() {
         parent::__construct();
         $this->load->helper(['url', 'form']);
         $this->load->model('UserModel');
-        $this->load->library('session');
     }
 
     public function join(){
@@ -17,7 +20,6 @@ class Member extends CI_Controller {
     }
 
     public function registerTreatment() {
-        $this->load->library('session');
         
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $email = $this->input->post('email');

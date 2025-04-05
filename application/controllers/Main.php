@@ -1,7 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Main extends CI_Controller {
+require_once(APPPATH . 'core/Secure_Controller.php');
+
+class Main extends Secure_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -20,6 +22,12 @@ class Main extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('/user/main');
+		$data = [
+			'is_logged_in' => $this->session->userdata('is_logged_in'),
+			'user' => $this->user
+		];
+		$this->load->view('/user/common/header');
+		$this->load->view('/user/main', $data);
+		$this->load->view('/user/common/footer');
 	}
 }

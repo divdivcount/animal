@@ -1,13 +1,16 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Account extends CI_Controller {
+require_once(APPPATH . 'core/Secure_Controller.php');
+
+class Account extends Secure_Controller {
+
+  protected $block_if_logged_in = true;
 
   public function __construct() {
     parent::__construct();
     $this->load->helper('url');
     $this->load->model('UserModel');
-    $this->load->library('session');
   }
 
   public function index() {
@@ -24,8 +27,11 @@ class Account extends CI_Controller {
 
     if (!$user || !password_verify($password, $user->password)) {
       $this->session->set_flashdata('error', '이메일 또는 비밀번호가 올바르지 않습니다.');
-      redirect('auth');
+      redirect('account');
     }
+
+    //해당 세션 초기화
+    $this->session->sess_regenerate(TRUE); 
 
     $this->session->set_userdata([
       'user_id' => $user->id,
@@ -37,8 +43,15 @@ class Account extends CI_Controller {
     redirect('main'); // 게시판 메인으로 이동
   }
 
-  public function logout() {
-    $this->session->sess_destroy();
-    redirect('auth');
+  public function logout()
+  {
+      $this->session->sess_destroy();
+
+      $this->output->set_header('Cache-Control: no-cache, no-store, must-revalidate');
+      $this->output->set_header('Pragma: no-cache');
+      $this->output->set_header('Expires: 0');
+    
+      redirect('/account');
+      exit;
   }
 }
