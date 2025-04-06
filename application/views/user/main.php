@@ -1,5 +1,3 @@
-<!-- /application/views/user/main.php -->
-
 <div class="container">
     <div class="header">
         <?php if ($user): ?>
