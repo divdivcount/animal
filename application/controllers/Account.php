@@ -22,8 +22,10 @@ class Account extends Secure_Controller {
   public function login() {
     $email = $this->input->post('email');
     $password = $this->input->post('password');
+    $user = $this->UserModel->get_by_email(encrypt_string($email));
 
-    $user = $this->UserModel->get_by_email($email);
+    echo encrypt_string($email);
+    exit;
 
     if (!$user || !password_verify($password, $user->password)) {
       $this->session->set_flashdata('error', '이메일 또는 비밀번호가 올바르지 않습니다.');

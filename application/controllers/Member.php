@@ -33,7 +33,7 @@ class Member extends Secure_Controller {
                 redirect('member/join');
             }
     
-            if ($this->UserModel->exists_by_email($email)) {
+            if ($this->UserModel->exists_by_email(encrypt_string($email))) {
                 $this->session->set_flashdata('error', '이미 가입된 이메일입니다.');
                 redirect('member/join');
             }
@@ -58,7 +58,9 @@ class Member extends Secure_Controller {
             $this->session->set_flashdata('success', '회원가입이 완료되었습니다. 로그인 해주세요!');
             redirect('account');
         } else {
+            $this->load->view('/user/common/header');
             $this->load->view('/user/auth/register');
+            $this->load->view('/user/common/footer');
         }
     }
 

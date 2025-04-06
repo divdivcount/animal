@@ -22,14 +22,19 @@ class Secure_Controller extends CI_Controller
         $this->output->set_header("X-XSS-Protection: 1; mode=block");
         $this->output->set_header("X-Content-Type-Options: nosniff");
 
-        // ✅ 로그인 상태 바인딩
-        if ($this->session->userdata('is_logged_in')) {
-            $this->user = (object)[
-                'id'       => $this->session->userdata('user_id'),
-                'nickname' => $this->session->userdata('nickname'),
-                'role'     => $this->session->userdata('role')
-            ];
-        }
+       // 🔐 세션 값 확인
+       log_message('debug', 'Session Data: ' . print_r($this->session->userdata(), true)); // 디버깅 출력
+
+       // 로그인한 사용자 정보 바인딩
+       if ($this->session->userdata('is_logged_in')) {
+           $this->user = (object)[
+               'id'       => $this->session->userdata('user_id'),
+               'nickname' => $this->session->userdata('nickname'),
+               'role'     => $this->session->userdata('role')
+           ];
+       } else {
+           log_message('error', 'No user data found in session'); // 세션에 사용자 정보가 없을 때 오류 로그
+       }
 
         // ✅ 로그인 필수 기능일 경우
         if ($this->require_login && !$this->user) {

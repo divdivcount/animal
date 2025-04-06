@@ -8,7 +8,6 @@
         <?= $this->session->flashdata('error') ?>
       </div>
     <?php endif; ?>
-
     <form method="POST" action="<?= site_url('account/login') ?>">
       <input type="hidden" name="<?=$this->security->get_csrf_token_name();?>" value="<?=$this->security->get_csrf_hash();?>" />
       <div class="mb-3">
