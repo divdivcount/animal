@@ -7,6 +7,14 @@ class UserModel extends CI_Model {
       $this->load->database('default');
   }
 
+  public function get_by_id($id)
+  {
+      $this->db->select('id, nickname'); // 비밀번호 제외하고 id와 nickname만 선택
+      $this->db->where('id', $id);
+      $query = $this->db->get('users');
+      return $query->row(); // 사용자 정보 한 줄 반환
+  }
+
   public function get_by_email($email) {
     return $this->db->get_where('users', ['email' => $email])->row();
   }
