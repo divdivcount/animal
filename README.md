@@ -40,7 +40,6 @@
 
 | 패턴 | 설명 |
 |-----------|------|
-하루펫(HaruPet) 기획서
 | Backend | CodeIgniter 3, PHP, MySQL |
 | Frontend | HTML/CSS/JS + Bootstrap or Tailwind |
 | File Storage | AWS S3 or local /uploads |
@@ -53,7 +52,7 @@
 
 | 주차 | 작업 |
 |--------|------|
-| 1주차 | 기획 만족 + DB 설계 |
+| 1주차 | 기획 + DB 설계 |
 | 2-3주차 | 회원가입/포스팅/기록 기능 개발 |
 | 4주차 | 커뮤니티 / 보관함 개발 |
 | 5주차 | 기본 UI 적용 + 테스트 |
